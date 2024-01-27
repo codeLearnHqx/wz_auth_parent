@@ -3,7 +3,6 @@ package cn.hqx.system.controller;
 import cn.hqx.common.result.Result;
 import cn.hqx.model.system.SysRole;
 import cn.hqx.model.vo.SysRoleQueryVo;
-import cn.hqx.system.exception.BusinessException;
 import cn.hqx.system.service.SysRoleService;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -74,7 +73,7 @@ public class SysRoleController {
 
     // 批量删除
     @ApiOperation("批量删除")
-    @DeleteMapping("/batchRemove/")
+    @DeleteMapping("/batchRemove")
     public Result<Boolean> batchRemove(@RequestBody List<Long> ids) {
         boolean isSuccess = sysRoleService.removeByIds(ids);
         if (isSuccess) {

@@ -11,7 +11,7 @@
 
     <!-- 条件分页查询 -->
     <select id="selectPage" resultMap="RoleMap">
-        select id, role_name, description, create_time, update_time, is_deleted
+        select id, role_name, role_code, description, create_time, update_time, is_deleted
         from sys_role
         <where>
             <if test="sysRoleQueryVo.roleName != null and sysRoleQueryVo.roleName != ''">

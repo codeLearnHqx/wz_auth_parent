@@ -17,6 +17,7 @@ public class GlobalExceptionHandler {
     // 全局异常
     @ExceptionHandler(Exception.class)
     public Result<Boolean> error(Exception e) {
+        e.printStackTrace();
         return Result.fail(false).message("执行了全局异常处理");
     }
 
