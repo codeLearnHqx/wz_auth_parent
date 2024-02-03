@@ -55,12 +55,13 @@ public class SysUser extends BaseEntity {
 	@TableField("status")
 	private Boolean status;
 
+	// 权限
 	@TableField(exist = false)
 	private List<SysRole> roleList;
-	//岗位
+	// 岗位
 	@TableField(exist = false)
 	private String postName;
-	//部门
+	// 部门
 	@TableField(exist = false)
 	private String deptName;
 }

@@ -52,7 +52,7 @@ public class SysMenu extends BaseEntity {
 
 	@ApiModelProperty(value = "状态(0:禁止,1:正常)")
 	@TableField("status")
-	private Integer status;
+	private Boolean status;
 
 	// 下级列表
 	@TableField(exist = false)
