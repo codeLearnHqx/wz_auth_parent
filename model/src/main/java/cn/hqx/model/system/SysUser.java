@@ -53,7 +53,7 @@ public class SysUser extends BaseEntity {
 
 	@ApiModelProperty(value = "状态（1：正常 0：停用）")
 	@TableField("status")
-	private Integer status;
+	private Boolean status;
 
 	@TableField(exist = false)
 	private List<SysRole> roleList;

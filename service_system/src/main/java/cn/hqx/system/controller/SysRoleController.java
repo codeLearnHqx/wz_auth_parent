@@ -2,6 +2,7 @@ package cn.hqx.system.controller;
 
 import cn.hqx.common.result.Result;
 import cn.hqx.model.system.SysRole;
+import cn.hqx.model.vo.AssignRoleVo;
 import cn.hqx.model.vo.SysRoleQueryVo;
 import cn.hqx.system.service.SysRoleService;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 /**
  * @Description
@@ -103,6 +106,24 @@ public class SysRoleController {
         IPage<SysRole> pageModel = sysRoleService.selectPage(page, sysRoleQueryVo);
 
         return Result.ok(pageModel);
+    }
+
+    @ApiOperation("获取用户角色数据")
+    @GetMapping("/toAssign/{userId}")
+    public Result<Map<String, Object>> toAssign(@PathVariable Long userId) {
+        Map<String, Object> roleMap = sysRoleService.getRolesByUserId(userId);
+        return Result.ok(roleMap);
+    }
+
+    @ApiOperation(" 给用户分配角色")
+    @PostMapping("/doAssign")
+    public Result<Boolean> doAssign(@RequestBody AssignRoleVo assignRoleVo) {
+        Boolean isSuccess = sysRoleService.doAssign(assignRoleVo);
+        if (isSuccess) {
+            return Result.ok(true);
+        } else {
+            return Result.fail(false);
+        }
     }
 
 }
